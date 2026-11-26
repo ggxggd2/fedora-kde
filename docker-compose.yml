@@ -1,1 +1,24 @@
 
+
+services:
+  fedora-kde:
+    build: .
+    container_name: fedora-kde
+    restart: unless-stopped
+
+    ports:
+      - "6080:6080"
+
+    shm_size: "2gb"
+
+    deploy:
+      resources:
+        limits:
+          cpus: "4.0"
+          memory: 8G
+
+    volumes:
+      - fedora-data:/root
+
+volumes:
+  fedora-data:
